@@ -1,0 +1,2838 @@
+{
+ "meta": {
+  "seed": 42,
+  "sample_size": 200000,
+  "corr_threshold": 0.99,
+  "near_constant_share": 0.99,
+  "window_gap_seconds": 300,
+  "timestamp_format": "%d/%m/%Y %I:%M:%S %p",
+  "n_features": 76,
+  "float32_features": [
+   "Total Fwd Packet",
+   "Total Bwd packets",
+   "Total Length of Fwd Packet",
+   "Fwd Packet Length Max",
+   "Fwd Packet Length Min",
+   "Bwd Packet Length Max",
+   "Bwd Packet Length Min",
+   "Fwd PSH Flags",
+   "Bwd PSH Flags",
+   "Fwd URG Flags",
+   "Bwd URG Flags",
+   "Fwd Header Length",
+   "Bwd Header Length",
+   "Packet Length Min",
+   "Packet Length Max",
+   "FIN Flag Count",
+   "SYN Flag Count",
+   "RST Flag Count",
+   "PSH Flag Count",
+   "ACK Flag Count",
+   "URG Flag Count",
+   "CWR Flag Count",
+   "ECE Flag Count",
+   "Fwd Bytes/Bulk Avg",
+   "Fwd Packet/Bulk Avg",
+   "Bwd Packet/Bulk Avg",
+   "Subflow Fwd Packets",
+   "Subflow Fwd Bytes",
+   "Subflow Bwd Packets",
+   "Subflow Bwd Bytes",
+   "FWD Init Win Bytes",
+   "Bwd Init Win Bytes",
+   "Fwd Act Data Pkts",
+   "Fwd Seg Size Min"
+  ],
+  "corr_sample_constant_columns_skipped": [
+   "Bwd URG Flags"
+  ]
+ },
+ "files": {
+  "Monday": {
+   "parquet": "data/processed/Monday.parquet",
+   "parquet_bytes": 58153643,
+   "csv_bytes": 208244807,
+   "rows": 371749,
+   "columns": 88
+  },
+  "Tuesday": {
+   "parquet": "data/processed/Tuesday.parquet",
+   "parquet_bytes": 50282946,
+   "csv_bytes": 178453210,
+   "rows": 322003,
+   "columns": 88
+  },
+  "Wednesday": {
+   "parquet": "data/processed/Wednesday.parquet",
+   "parquet_bytes": 71828798,
+   "csv_bytes": 291529516,
+   "rows": 496779,
+   "columns": 88
+  },
+  "Thursday": {
+   "parquet": "data/processed/Thursday.parquet",
+   "parquet_bytes": 49401831,
+   "csv_bytes": 187707525,
+   "rows": 362368,
+   "columns": 88
+  },
+  "Friday": {
+   "parquet": "data/processed/Friday.parquet",
+   "parquet_bytes": 71013856,
+   "csv_bytes": 282607319,
+   "rows": 547915,
+   "columns": 88
+  }
+ },
+ "days": {
+  "Monday": {
+   "rows": 371749,
+   "label_counts": {
+    "BENIGN": 371749
+   },
+   "timestamp_min": "2017-07-03T13:55:58",
+   "timestamp_max": "2017-07-03T22:01:34",
+   "weekday_of_timestamps": [
+    "Monday"
+   ],
+   "dates": [
+    "2017-07-03"
+   ]
+  },
+  "Tuesday": {
+   "rows": 322003,
+   "label_counts": {
+    "BENIGN": 315031,
+    "FTP-Patator": 3973,
+    "SSH-Patator": 2980,
+    "FTP-Patator - Attempted": 11,
+    "SSH-Patator - Attempted": 8
+   },
+   "timestamp_min": "2017-07-04T13:53:44",
+   "timestamp_max": "2017-07-04T22:00:30",
+   "weekday_of_timestamps": [
+    "Tuesday"
+   ],
+   "dates": [
+    "2017-07-04"
+   ]
+  },
+  "Wednesday": {
+   "rows": 496779,
+   "label_counts": {
+    "BENIGN": 319216,
+    "DoS Hulk": 158469,
+    "DoS GoldenEye": 7567,
+    "DoS slowloris": 4001,
+    "DoS Slowhttptest - Attempted": 3369,
+    "DoS Slowhttptest": 1742,
+    "DoS slowloris - Attempted": 1731,
+    "DoS Hulk - Attempted": 593,
+    "DoS GoldenEye - Attempted": 80,
+    "Heartbleed": 11
+   },
+   "timestamp_min": "2017-07-05T13:42:42",
+   "timestamp_max": "2017-07-05T22:10:14",
+   "weekday_of_timestamps": [
+    "Wednesday"
+   ],
+   "dates": [
+    "2017-07-05"
+   ]
+  },
+  "Thursday": {
+   "rows": 362368,
+   "label_counts": {
+    "BENIGN": 360264,
+    "Web Attack - Brute Force - Attempted": 1214,
+    "Web Attack - XSS - Attempted": 652,
+    "Web Attack - Brute Force": 151,
+    "Infiltration": 32,
+    "Web Attack - XSS": 27,
+    "Infiltration - Attempted": 16,
+    "Web Attack - Sql Injection": 12
+   },
+   "timestamp_min": "2017-07-06T13:59:00",
+   "timestamp_max": "2017-07-06T22:04:36",
+   "weekday_of_timestamps": [
+    "Thursday"
+   ],
+   "dates": [
+    "2017-07-06"
+   ]
+  },
+  "Friday": {
+   "rows": 547915,
+   "label_counts": {
+    "BENIGN": 291433,
+    "PortScan": 159151,
+    "DDoS": 95123,
+    "Bot - Attempted": 1470,
+    "Bot": 738
+   },
+   "timestamp_min": "2017-07-07T13:59:50",
+   "timestamp_max": "2017-07-07T22:02:40",
+   "weekday_of_timestamps": [
+    "Friday"
+   ],
+   "dates": [
+    "2017-07-07"
+   ]
+  }
+ },
+ "label_check": {
+  "all_match": true,
+  "rows": [
+   {
+    "label": "BENIGN",
+    "manifest": 1657693,
+    "observed": 1657693,
+    "match": true
+   },
+   {
+    "label": "Bot",
+    "manifest": 738,
+    "observed": 738,
+    "match": true
+   },
+   {
+    "label": "Bot - Attempted",
+    "manifest": 1470,
+    "observed": 1470,
+    "match": true
+   },
+   {
+    "label": "DDoS",
+    "manifest": 95123,
+    "observed": 95123,
+    "match": true
+   },
+   {
+    "label": "DoS GoldenEye",
+    "manifest": 7567,
+    "observed": 7567,
+    "match": true
+   },
+   {
+    "label": "DoS GoldenEye - Attempted",
+    "manifest": 80,
+    "observed": 80,
+    "match": true
+   },
+   {
+    "label": "DoS Hulk",
+    "manifest": 158469,
+    "observed": 158469,
+    "match": true
+   },
+   {
+    "label": "DoS Hulk - Attempted",
+    "manifest": 593,
+    "observed": 593,
+    "match": true
+   },
+   {
+    "label": "DoS Slowhttptest",
+    "manifest": 1742,
+    "observed": 1742,
+    "match": true
+   },
+   {
+    "label": "DoS Slowhttptest - Attempted",
+    "manifest": 3369,
+    "observed": 3369,
+    "match": true
+   },
+   {
+    "label": "DoS slowloris",
+    "manifest": 4001,
+    "observed": 4001,
+    "match": true
+   },
+   {
+    "label": "DoS slowloris - Attempted",
+    "manifest": 1731,
+    "observed": 1731,
+    "match": true
+   },
+   {
+    "label": "FTP-Patator",
+    "manifest": 3973,
+    "observed": 3973,
+    "match": true
+   },
+   {
+    "label": "FTP-Patator - Attempted",
+    "manifest": 11,
+    "observed": 11,
+    "match": true
+   },
+   {
+    "label": "Heartbleed",
+    "manifest": 11,
+    "observed": 11,
+    "match": true
+   },
+   {
+    "label": "Infiltration",
+    "manifest": 32,
+    "observed": 32,
+    "match": true
+   },
+   {
+    "label": "Infiltration - Attempted",
+    "manifest": 16,
+    "observed": 16,
+    "match": true
+   },
+   {
+    "label": "PortScan",
+    "manifest": 159151,
+    "observed": 159151,
+    "match": true
+   },
+   {
+    "label": "SSH-Patator",
+    "manifest": 2980,
+    "observed": 2980,
+    "match": true
+   },
+   {
+    "label": "SSH-Patator - Attempted",
+    "manifest": 8,
+    "observed": 8,
+    "match": true
+   },
+   {
+    "label": "Web Attack - Brute Force",
+    "manifest": 151,
+    "observed": 151,
+    "match": true
+   },
+   {
+    "label": "Web Attack - Brute Force - Attempted",
+    "manifest": 1214,
+    "observed": 1214,
+    "match": true
+   },
+   {
+    "label": "Web Attack - Sql Injection",
+    "manifest": 12,
+    "observed": 12,
+    "match": true
+   },
+   {
+    "label": "Web Attack - XSS",
+    "manifest": 27,
+    "observed": 27,
+    "match": true
+   },
+   {
+    "label": "Web Attack - XSS - Attempted",
+    "manifest": 652,
+    "observed": 652,
+    "match": true
+   }
+  ],
+  "row_counts_match_manifest": true,
+  "total_rows": 2100814
+ },
+ "nan_inf": {
+  "Flow Bytes/s": {
+   "nan": 602,
+   "posinf": 191,
+   "neginf": 0,
+   "nan_by_day": {
+    "Tuesday": 3,
+    "Wednesday": 40,
+    "Thursday": 261,
+    "Friday": 298
+   },
+   "posinf_by_day": {
+    "Monday": 60,
+    "Tuesday": 20,
+    "Wednesday": 31,
+    "Thursday": 30,
+    "Friday": 50
+   },
+   "neginf_by_day": {}
+  },
+  "Flow Packets/s": {
+   "nan": 0,
+   "posinf": 793,
+   "neginf": 0,
+   "nan_by_day": {},
+   "posinf_by_day": {
+    "Monday": 60,
+    "Tuesday": 23,
+    "Wednesday": 71,
+    "Thursday": 291,
+    "Friday": 348
+   },
+   "neginf_by_day": {}
+  },
+  "Flow IAT Mean": {
+   "nan": 252,
+   "posinf": 0,
+   "neginf": 0,
+   "nan_by_day": {
+    "Monday": 47,
+    "Tuesday": 23,
+    "Wednesday": 70,
+    "Thursday": 60,
+    "Friday": 52
+   },
+   "posinf_by_day": {},
+   "neginf_by_day": {}
+  },
+  "Flow IAT Std": {
+   "nan": 252,
+   "posinf": 0,
+   "neginf": 0,
+   "nan_by_day": {
+    "Monday": 47,
+    "Tuesday": 23,
+    "Wednesday": 70,
+    "Thursday": 60,
+    "Friday": 52
+   },
+   "posinf_by_day": {},
+   "neginf_by_day": {}
+  },
+  "Flow IAT Max": {
+   "nan": 252,
+   "posinf": 0,
+   "neginf": 0,
+   "nan_by_day": {
+    "Monday": 47,
+    "Tuesday": 23,
+    "Wednesday": 70,
+    "Thursday": 60,
+    "Friday": 52
+   },
+   "posinf_by_day": {},
+   "neginf_by_day": {}
+  },
+  "Flow IAT Min": {
+   "nan": 252,
+   "posinf": 0,
+   "neginf": 0,
+   "nan_by_day": {
+    "Monday": 47,
+    "Tuesday": 23,
+    "Wednesday": 70,
+    "Thursday": 60,
+    "Friday": 52
+   },
+   "posinf_by_day": {},
+   "neginf_by_day": {}
+  }
+ },
+ "negatives": {
+  "Flow Duration": {
+   "count": 31,
+   "min": -13.0,
+   "by_day": {
+    "Friday": 31
+   },
+   "by_label": {
+    "BENIGN": 31
+   }
+  },
+  "Flow Packets/s": {
+   "count": 31,
+   "min": -2000000.0,
+   "by_day": {
+    "Friday": 31
+   },
+   "by_label": {
+    "BENIGN": 31
+   }
+  },
+  "Flow IAT Mean": {
+   "count": 31,
+   "min": -13.0,
+   "by_day": {
+    "Friday": 31
+   },
+   "by_label": {
+    "BENIGN": 31
+   }
+  },
+  "Flow IAT Max": {
+   "count": 31,
+   "min": -13.0,
+   "by_day": {
+    "Friday": 31
+   },
+   "by_label": {
+    "BENIGN": 31
+   }
+  },
+  "Flow IAT Min": {
+   "count": 2922,
+   "min": -14.0,
+   "by_day": {
+    "Monday": 517,
+    "Tuesday": 511,
+    "Wednesday": 758,
+    "Thursday": 621,
+    "Friday": 515
+   },
+   "by_label": {
+    "BENIGN": 2693,
+    "FTP-Patator": 4,
+    "SSH-Patator": 2,
+    "DoS Hulk": 188,
+    "DoS GoldenEye": 5,
+    "Heartbleed": 4,
+    "Infiltration": 1,
+    "DDoS": 25
+   }
+  }
+ },
+ "constant_columns": [],
+ "near_constant_columns": [
+  {
+   "column": "Bwd URG Flags",
+   "n_unique": 2,
+   "top_value": 0.0,
+   "rows_other_values": 1,
+   "top_share": 0.9999995239940328
+  },
+  {
+   "column": "Fwd URG Flags",
+   "n_unique": 5,
+   "top_value": 0.0,
+   "rows_other_values": 93,
+   "top_share": 0.9999557314450493
+  },
+  {
+   "column": "URG Flag Count",
+   "n_unique": 5,
+   "top_value": 0.0,
+   "rows_other_values": 94,
+   "top_share": 0.9999552554390821
+  },
+  {
+   "column": "Subflow Bwd Packets",
+   "n_unique": 2,
+   "top_value": 0.0,
+   "rows_other_values": 161,
+   "top_share": 0.9999233630392791
+  },
+  {
+   "column": "ECE Flag Count",
+   "n_unique": 5,
+   "top_value": 0.0,
+   "rows_other_values": 686,
+   "top_share": 0.9996734599064934
+  },
+  {
+   "column": "CWR Flag Count",
+   "n_unique": 9,
+   "top_value": 0.0,
+   "rows_other_values": 764,
+   "top_share": 0.9996363314410509
+  }
+ ],
+ "identical_column_groups": [],
+ "correlated_pairs": [
+  {
+   "a": "Fwd Packet Length Mean",
+   "b": "Fwd Segment Size Avg",
+   "r": 1.0,
+   "identical": false
+  },
+  {
+   "a": "Bwd Packet Length Mean",
+   "b": "Bwd Segment Size Avg",
+   "r": 1.0,
+   "identical": false
+  },
+  {
+   "a": "Fwd URG Flags",
+   "b": "URG Flag Count",
+   "r": 1.0,
+   "identical": false
+  },
+  {
+   "a": "Packet Length Mean",
+   "b": "Average Packet Size",
+   "r": 0.9999999999999999,
+   "identical": false
+  },
+  {
+   "a": "Total Bwd packets",
+   "b": "Bwd Header Length",
+   "r": 0.9999489874912005,
+   "identical": false
+  },
+  {
+   "a": "Total Fwd Packet",
+   "b": "Fwd Header Length",
+   "r": 0.9997631440147741,
+   "identical": false
+  },
+  {
+   "a": "Total Bwd packets",
+   "b": "ACK Flag Count",
+   "r": 0.9997091864535631,
+   "identical": false
+  },
+  {
+   "a": "Bwd Header Length",
+   "b": "ACK Flag Count",
+   "r": 0.9996544388478491,
+   "identical": false
+  },
+  {
+   "a": "Fwd Header Length",
+   "b": "ACK Flag Count",
+   "r": 0.999586611516878,
+   "identical": false
+  },
+  {
+   "a": "Total Fwd Packet",
+   "b": "ACK Flag Count",
+   "r": 0.9994830967585232,
+   "identical": false
+  },
+  {
+   "a": "Flow Duration",
+   "b": "Fwd IAT Total",
+   "r": 0.9993739191614638,
+   "identical": false
+  },
+  {
+   "a": "Fwd Header Length",
+   "b": "Bwd Header Length",
+   "r": 0.9988067602631705,
+   "identical": false
+  },
+  {
+   "a": "Total Bwd packets",
+   "b": "Fwd Header Length",
+   "r": 0.9987707737215349,
+   "identical": false
+  },
+  {
+   "a": "Total Fwd Packet",
+   "b": "Total Bwd packets",
+   "r": 0.9984274249674551,
+   "identical": false
+  },
+  {
+   "a": "Flow IAT Max",
+   "b": "Idle Max",
+   "r": 0.9983900354255247,
+   "identical": false
+  },
+  {
+   "a": "Total Fwd Packet",
+   "b": "Bwd Header Length",
+   "r": 0.9983650891321832,
+   "identical": false
+  },
+  {
+   "a": "Flow IAT Max",
+   "b": "Fwd IAT Max",
+   "r": 0.9982340263095867,
+   "identical": false
+  },
+  {
+   "a": "Fwd IAT Max",
+   "b": "Idle Max",
+   "r": 0.9966271362285504,
+   "identical": false
+  },
+  {
+   "a": "Total Fwd Packet",
+   "b": "Total Length of Bwd Packet",
+   "r": 0.9915268980707601,
+   "identical": false
+  },
+  {
+   "a": "Idle Mean",
+   "b": "Idle Min",
+   "r": 0.9903495279729545,
+   "identical": false
+  }
+ ],
+ "near_identical_pairs": [
+  {
+   "a": "Fwd Packet Length Mean",
+   "b": "Fwd Segment Size Avg",
+   "rows_equal": 1803990,
+   "max_abs_diff": 3.637978807091713e-12,
+   "max_rel_diff": 3.0300624192915236e-14,
+   "nonfinite_mismatch": 0,
+   "share_rows_equal": 0.85871000478862
+  },
+  {
+   "a": "Bwd Packet Length Mean",
+   "b": "Bwd Segment Size Avg",
+   "rows_equal": 1810716,
+   "max_abs_diff": 9.777068044058979e-11,
+   "max_rel_diff": 4.413634773740186e-14,
+   "nonfinite_mismatch": 0,
+   "share_rows_equal": 0.8619116209240799
+  },
+  {
+   "a": "Fwd URG Flags",
+   "b": "URG Flag Count",
+   "rows_equal": 2100813,
+   "max_abs_diff": 2.0,
+   "max_rel_diff": 1.0,
+   "nonfinite_mismatch": 0,
+   "share_rows_equal": 0.9999995239940328
+  },
+  {
+   "a": "Packet Length Mean",
+   "b": "Average Packet Size",
+   "rows_equal": 1591333,
+   "max_abs_diff": 6.912159733474255e-11,
+   "max_rel_diff": 5.675169803180988e-14,
+   "nonfinite_mismatch": 0,
+   "share_rows_equal": 0.7574840038194719
+  },
+  {
+   "a": "Total Bwd packets",
+   "b": "Bwd Header Length",
+   "rows_equal": 55266,
+   "max_abs_diff": 5546518.0,
+   "max_rel_diff": 1.0,
+   "nonfinite_mismatch": 0,
+   "share_rows_equal": 0.026306945783872347
+  }
+ ],
+ "duplicates": {
+  "all_columns_by_day": {
+   "Monday": {
+    "extra_copies": 0,
+    "rows_in_dup_groups": 0
+   },
+   "Tuesday": {
+    "extra_copies": 0,
+    "rows_in_dup_groups": 0
+   },
+   "Wednesday": {
+    "extra_copies": 0,
+    "rows_in_dup_groups": 0
+   },
+   "Thursday": {
+    "extra_copies": 3141,
+    "rows_in_dup_groups": 6282
+   },
+   "Friday": {
+    "extra_copies": 2,
+    "rows_in_dup_groups": 4
+   }
+  },
+  "all_columns_total": {
+   "extra_copies": 3143,
+   "rows_in_dup_groups": 6286
+  },
+  "features_by_day_exact": {
+   "Monday": {
+    "extra_copies": 21183,
+    "rows_in_dup_groups": 31184,
+    "hash_extra_copies": 21183,
+    "hash_matches_exact": true
+   },
+   "Tuesday": {
+    "extra_copies": 14975,
+    "rows_in_dup_groups": 22750,
+    "hash_extra_copies": 14975,
+    "hash_matches_exact": true
+   },
+   "Wednesday": {
+    "extra_copies": 19261,
+    "rows_in_dup_groups": 28722,
+    "hash_extra_copies": 19261,
+    "hash_matches_exact": true
+   },
+   "Thursday": {
+    "extra_copies": 81617,
+    "rows_in_dup_groups": 91768,
+    "hash_extra_copies": 81617,
+    "hash_matches_exact": true
+   },
+   "Friday": {
+    "extra_copies": 177528,
+    "rows_in_dup_groups": 187194,
+    "hash_extra_copies": 177528,
+    "hash_matches_exact": true
+   }
+  },
+  "features_overall_hash": {
+   "extra_copies": 386718,
+   "rows_in_dup_groups": 450443,
+   "distinct_vectors": 1714096,
+   "rows_in_cross_day_groups": 282034,
+   "rows_in_conflicting_label_groups": 94377,
+   "conflicting_groups": 710
+  },
+  "features_plus_dstport_protocol_overall_hash": {
+   "extra_copies": 264192,
+   "rows_in_dup_groups": 369278,
+   "distinct_vectors": 1836622,
+   "rows_in_cross_day_groups": 203639,
+   "rows_in_conflicting_label_groups": 17189,
+   "conflicting_groups": 4934
+  },
+  "per_label": [
+   {
+    "label": "BENIGN",
+    "rows": 1657693,
+    "rows_in_dup_groups": 290595,
+    "extra_copies_within_label": 227287,
+    "rows_conflicting_any_other_label": 16663,
+    "rows_sharing_vector_with_BENIGN": null,
+    "rows_sharing_vector_with_attack": 14809,
+    "rows_sharing_vector_with_partner_label": null,
+    "rows_sharing_vector_with_other_attack_type": null
+   },
+   {
+    "label": "Bot",
+    "rows": 738,
+    "rows_in_dup_groups": 0,
+    "extra_copies_within_label": 0,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "Bot - Attempted",
+    "rows": 1470,
+    "rows_in_dup_groups": 1387,
+    "extra_copies_within_label": 757,
+    "rows_conflicting_any_other_label": 1288,
+    "rows_sharing_vector_with_BENIGN": 1288,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 32
+   },
+   {
+    "label": "DDoS",
+    "rows": 95123,
+    "rows_in_dup_groups": 0,
+    "extra_copies_within_label": 0,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "DoS GoldenEye",
+    "rows": 7567,
+    "rows_in_dup_groups": 0,
+    "extra_copies_within_label": 0,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "DoS GoldenEye - Attempted",
+    "rows": 80,
+    "rows_in_dup_groups": 6,
+    "extra_copies_within_label": 3,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "DoS Hulk",
+    "rows": 158469,
+    "rows_in_dup_groups": 0,
+    "extra_copies_within_label": 0,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "DoS Hulk - Attempted",
+    "rows": 593,
+    "rows_in_dup_groups": 26,
+    "extra_copies_within_label": 19,
+    "rows_conflicting_any_other_label": 14,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 14
+   },
+   {
+    "label": "DoS Slowhttptest",
+    "rows": 1742,
+    "rows_in_dup_groups": 21,
+    "extra_copies_within_label": 11,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "DoS Slowhttptest - Attempted",
+    "rows": 3369,
+    "rows_in_dup_groups": 13,
+    "extra_copies_within_label": 7,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "DoS slowloris",
+    "rows": 4001,
+    "rows_in_dup_groups": 495,
+    "extra_copies_within_label": 405,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "DoS slowloris - Attempted",
+    "rows": 1731,
+    "rows_in_dup_groups": 31,
+    "extra_copies_within_label": 27,
+    "rows_conflicting_any_other_label": 25,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 25
+   },
+   {
+    "label": "FTP-Patator",
+    "rows": 3973,
+    "rows_in_dup_groups": 0,
+    "extra_copies_within_label": 0,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "FTP-Patator - Attempted",
+    "rows": 11,
+    "rows_in_dup_groups": 0,
+    "extra_copies_within_label": 0,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "Heartbleed",
+    "rows": 11,
+    "rows_in_dup_groups": 0,
+    "extra_copies_within_label": 0,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "Infiltration",
+    "rows": 32,
+    "rows_in_dup_groups": 0,
+    "extra_copies_within_label": 0,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "Infiltration - Attempted",
+    "rows": 16,
+    "rows_in_dup_groups": 15,
+    "extra_copies_within_label": 0,
+    "rows_conflicting_any_other_label": 15,
+    "rows_sharing_vector_with_BENIGN": 15,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 14
+   },
+   {
+    "label": "PortScan",
+    "rows": 159151,
+    "rows_in_dup_groups": 157854,
+    "extra_copies_within_label": 157478,
+    "rows_conflicting_any_other_label": 76372,
+    "rows_sharing_vector_with_BENIGN": 76372,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "SSH-Patator",
+    "rows": 2980,
+    "rows_in_dup_groups": 0,
+    "extra_copies_within_label": 0,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "SSH-Patator - Attempted",
+    "rows": 8,
+    "rows_in_dup_groups": 0,
+    "extra_copies_within_label": 0,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "Web Attack - Brute Force",
+    "rows": 151,
+    "rows_in_dup_groups": 0,
+    "extra_copies_within_label": 0,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "Web Attack - Brute Force - Attempted",
+    "rows": 1214,
+    "rows_in_dup_groups": 0,
+    "extra_copies_within_label": 0,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "Web Attack - Sql Injection",
+    "rows": 12,
+    "rows_in_dup_groups": 0,
+    "extra_copies_within_label": 0,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "Web Attack - XSS",
+    "rows": 27,
+    "rows_in_dup_groups": 0,
+    "extra_copies_within_label": 0,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   },
+   {
+    "label": "Web Attack - XSS - Attempted",
+    "rows": 652,
+    "rows_in_dup_groups": 0,
+    "extra_copies_within_label": 0,
+    "rows_conflicting_any_other_label": 0,
+    "rows_sharing_vector_with_BENIGN": 0,
+    "rows_sharing_vector_with_attack": null,
+    "rows_sharing_vector_with_partner_label": 0,
+    "rows_sharing_vector_with_other_attack_type": 0
+   }
+  ],
+  "conflicting_label_pairs": [
+   {
+    "label_a": "BENIGN",
+    "label_b": "Bot - Attempted",
+    "shared_vectors": 595
+   },
+   {
+    "label_a": "BENIGN",
+    "label_b": "PortScan",
+    "shared_vectors": 113
+   },
+   {
+    "label_a": "BENIGN",
+    "label_b": "Infiltration - Attempted",
+    "shared_vectors": 15
+   },
+   {
+    "label_a": "Bot - Attempted",
+    "label_b": "Infiltration - Attempted",
+    "shared_vectors": 14
+   },
+   {
+    "label_a": "DoS Hulk - Attempted",
+    "label_b": "DoS slowloris - Attempted",
+    "shared_vectors": 1
+   }
+  ],
+  "flow_id_reuse_by_day": {
+   "Monday": {
+    "distinct_flow_ids": 249212,
+    "rows_sharing_flow_id": 162470
+   },
+   "Tuesday": {
+    "distinct_flow_ids": 211630,
+    "rows_sharing_flow_id": 146922
+   },
+   "Wednesday": {
+    "distinct_flow_ids": 226769,
+    "rows_sharing_flow_id": 319610
+   },
+   "Thursday": {
+    "distinct_flow_ids": 258787,
+    "rows_sharing_flow_id": 143159
+   },
+   "Friday": {
+    "distinct_flow_ids": 396722,
+    "rows_sharing_flow_id": 203201
+   }
+  },
+  "rows_with_any_nan_or_inf_by_day": {
+   "Monday": 60,
+   "Tuesday": 23,
+   "Wednesday": 71,
+   "Thursday": 291,
+   "Friday": 348
+  },
+  "hash_note": "Overall/cross-day feature duplicates use a 64-bit row hash (pandas hash_pandas_object on float64 values, -0.0 mapped to 0.0); within-day counts also computed exactly with DataFrame.duplicated."
+ },
+ "time": {
+  "by_label": [
+   {
+    "day": "Monday",
+    "label": "BENIGN",
+    "rows": 371749,
+    "first": "2017-07-03T13:55:58",
+    "last": "2017-07-03T22:01:34"
+   },
+   {
+    "day": "Tuesday",
+    "label": "BENIGN",
+    "rows": 315031,
+    "first": "2017-07-04T13:53:44",
+    "last": "2017-07-04T22:00:30"
+   },
+   {
+    "day": "Tuesday",
+    "label": "FTP-Patator",
+    "rows": 3973,
+    "first": "2017-07-04T14:17:52",
+    "last": "2017-07-04T15:20:13"
+   },
+   {
+    "day": "Tuesday",
+    "label": "FTP-Patator - Attempted",
+    "rows": 11,
+    "first": "2017-07-04T14:22:57",
+    "last": "2017-07-04T14:24:34"
+   },
+   {
+    "day": "Tuesday",
+    "label": "SSH-Patator",
+    "rows": 2980,
+    "first": "2017-07-04T19:09:01",
+    "last": "2017-07-04T21:04:15"
+   },
+   {
+    "day": "Tuesday",
+    "label": "SSH-Patator - Attempted",
+    "rows": 8,
+    "first": "2017-07-04T20:09:01",
+    "last": "2017-07-04T20:09:06"
+   },
+   {
+    "day": "Wednesday",
+    "label": "BENIGN",
+    "rows": 319216,
+    "first": "2017-07-05T13:42:42",
+    "last": "2017-07-05T22:10:14"
+   },
+   {
+    "day": "Wednesday",
+    "label": "DoS slowloris - Attempted",
+    "rows": 1731,
+    "first": "2017-07-05T14:01:00",
+    "last": "2017-07-05T15:10:11"
+   },
+   {
+    "day": "Wednesday",
+    "label": "DoS slowloris",
+    "rows": 4001,
+    "first": "2017-07-05T14:48:46",
+    "last": "2017-07-05T15:10:34"
+   },
+   {
+    "day": "Wednesday",
+    "label": "DoS Slowhttptest",
+    "rows": 1742,
+    "first": "2017-07-05T15:15:37",
+    "last": "2017-07-05T15:35:18"
+   },
+   {
+    "day": "Wednesday",
+    "label": "DoS Slowhttptest - Attempted",
+    "rows": 3369,
+    "first": "2017-07-05T15:15:38",
+    "last": "2017-07-05T15:37:49"
+   },
+   {
+    "day": "Wednesday",
+    "label": "DoS Hulk",
+    "rows": 158469,
+    "first": "2017-07-05T15:43:23",
+    "last": "2017-07-05T16:01:34"
+   },
+   {
+    "day": "Wednesday",
+    "label": "DoS Hulk - Attempted",
+    "rows": 593,
+    "first": "2017-07-05T15:44:42",
+    "last": "2017-07-05T16:07:21"
+   },
+   {
+    "day": "Wednesday",
+    "label": "DoS GoldenEye",
+    "rows": 7567,
+    "first": "2017-07-05T16:10:03",
+    "last": "2017-07-05T16:19:49"
+   },
+   {
+    "day": "Wednesday",
+    "label": "DoS GoldenEye - Attempted",
+    "rows": 80,
+    "first": "2017-07-05T16:10:03",
+    "last": "2017-07-05T16:11:34"
+   },
+   {
+    "day": "Wednesday",
+    "label": "Heartbleed",
+    "rows": 11,
+    "first": "2017-07-05T20:12:15",
+    "last": "2017-07-05T20:32:18"
+   },
+   {
+    "day": "Thursday",
+    "label": "BENIGN",
+    "rows": 360264,
+    "first": "2017-07-06T13:59:00",
+    "last": "2017-07-06T22:04:36"
+   },
+   {
+    "day": "Thursday",
+    "label": "Web Attack - Brute Force",
+    "rows": 151,
+    "first": "2017-07-06T14:15:54",
+    "last": "2017-07-06T14:59:41"
+   },
+   {
+    "day": "Thursday",
+    "label": "Web Attack - Brute Force - Attempted",
+    "rows": 1214,
+    "first": "2017-07-06T14:19:27",
+    "last": "2017-07-06T15:00:10"
+   },
+   {
+    "day": "Thursday",
+    "label": "Web Attack - XSS",
+    "rows": 27,
+    "first": "2017-07-06T15:15:35",
+    "last": "2017-07-06T15:35:45"
+   },
+   {
+    "day": "Thursday",
+    "label": "Web Attack - XSS - Attempted",
+    "rows": 652,
+    "first": "2017-07-06T15:15:35",
+    "last": "2017-07-06T15:35:33"
+   },
+   {
+    "day": "Thursday",
+    "label": "Web Attack - Sql Injection",
+    "rows": 12,
+    "first": "2017-07-06T15:40:07",
+    "last": "2017-07-06T15:42:50"
+   },
+   {
+    "day": "Thursday",
+    "label": "Infiltration",
+    "rows": 32,
+    "first": "2017-07-06T19:19:02",
+    "last": "2017-07-06T20:44:24"
+   },
+   {
+    "day": "Thursday",
+    "label": "Infiltration - Attempted",
+    "rows": 16,
+    "first": "2017-07-06T19:30:21",
+    "last": "2017-07-06T19:40:29"
+   },
+   {
+    "day": "Friday",
+    "label": "BENIGN",
+    "rows": 291433,
+    "first": "2017-07-07T13:59:50",
+    "last": "2017-07-07T22:02:40"
+   },
+   {
+    "day": "Friday",
+    "label": "Bot",
+    "rows": 738,
+    "first": "2017-07-07T14:34:13",
+    "last": "2017-07-07T16:20:40"
+   },
+   {
+    "day": "Friday",
+    "label": "Bot - Attempted",
+    "rows": 1470,
+    "first": "2017-07-07T16:03:14",
+    "last": "2017-07-07T17:59:53"
+   },
+   {
+    "day": "Friday",
+    "label": "PortScan",
+    "rows": 159151,
+    "first": "2017-07-07T17:37:57",
+    "last": "2017-07-07T20:23:53"
+   },
+   {
+    "day": "Friday",
+    "label": "DDoS",
+    "rows": 95123,
+    "first": "2017-07-07T20:56:31",
+    "last": "2017-07-07T21:16:10"
+   }
+  ],
+  "windows_by_attack_type": [
+   {
+    "day": "Tuesday",
+    "attack_type": "FTP-Patator",
+    "rows_incl_attempted": 3984,
+    "rows_attack_only": 3973,
+    "first": "2017-07-04 14:17:52",
+    "last": "2017-07-04 15:20:13",
+    "span_minutes": 62.4,
+    "n_windows": 1,
+    "covered_minutes": 62.4,
+    "largest_window_share": 1.0,
+    "max_internal_gap_minutes": 1.5,
+    "benign_rows_in_windows": 63029,
+    "benign_rows_in_first_last_span": 63029,
+    "benign_rows_day": 315031,
+    "windows": [
+     {
+      "start": "2017-07-04 14:17:52",
+      "end": "2017-07-04 15:20:13",
+      "rows": 3984
+     }
+    ]
+   },
+   {
+    "day": "Tuesday",
+    "attack_type": "SSH-Patator",
+    "rows_incl_attempted": 2988,
+    "rows_attack_only": 2980,
+    "first": "2017-07-04 19:09:01",
+    "last": "2017-07-04 21:04:15",
+    "span_minutes": 115.2,
+    "n_windows": 2,
+    "covered_minutes": 62.3,
+    "largest_window_share": 0.9997,
+    "max_internal_gap_minutes": 52.9,
+    "benign_rows_in_windows": 47508,
+    "benign_rows_in_first_last_span": 77038,
+    "benign_rows_day": 315031,
+    "windows": [
+     {
+      "start": "2017-07-04 19:09:01",
+      "end": "2017-07-04 20:11:20",
+      "rows": 2987
+     },
+     {
+      "start": "2017-07-04 21:04:15",
+      "end": "2017-07-04 21:04:15",
+      "rows": 1
+     }
+    ]
+   },
+   {
+    "day": "Wednesday",
+    "attack_type": "DoS GoldenEye",
+    "rows_incl_attempted": 7647,
+    "rows_attack_only": 7567,
+    "first": "2017-07-05 16:10:03",
+    "last": "2017-07-05 16:19:49",
+    "span_minutes": 9.8,
+    "n_windows": 1,
+    "covered_minutes": 9.8,
+    "largest_window_share": 1.0,
+    "max_internal_gap_minutes": 3.1,
+    "benign_rows_in_windows": 5984,
+    "benign_rows_in_first_last_span": 5984,
+    "benign_rows_day": 319216,
+    "windows": [
+     {
+      "start": "2017-07-05 16:10:03",
+      "end": "2017-07-05 16:19:49",
+      "rows": 7647
+     }
+    ]
+   },
+   {
+    "day": "Wednesday",
+    "attack_type": "DoS Hulk",
+    "rows_incl_attempted": 159062,
+    "rows_attack_only": 158469,
+    "first": "2017-07-05 15:43:23",
+    "last": "2017-07-05 16:07:21",
+    "span_minutes": 24.0,
+    "n_windows": 1,
+    "covered_minutes": 24.0,
+    "largest_window_share": 1.0,
+    "max_internal_gap_minutes": 4.7,
+    "benign_rows_in_windows": 14894,
+    "benign_rows_in_first_last_span": 14894,
+    "benign_rows_day": 319216,
+    "windows": [
+     {
+      "start": "2017-07-05 15:43:23",
+      "end": "2017-07-05 16:07:21",
+      "rows": 159062
+     }
+    ]
+   },
+   {
+    "day": "Wednesday",
+    "attack_type": "DoS Slowhttptest",
+    "rows_incl_attempted": 5111,
+    "rows_attack_only": 1742,
+    "first": "2017-07-05 15:15:37",
+    "last": "2017-07-05 15:37:49",
+    "span_minutes": 22.2,
+    "n_windows": 1,
+    "covered_minutes": 22.2,
+    "largest_window_share": 1.0,
+    "max_internal_gap_minutes": 2.9,
+    "benign_rows_in_windows": 19423,
+    "benign_rows_in_first_last_span": 19423,
+    "benign_rows_day": 319216,
+    "windows": [
+     {
+      "start": "2017-07-05 15:15:37",
+      "end": "2017-07-05 15:37:49",
+      "rows": 5111
+     }
+    ]
+   },
+   {
+    "day": "Wednesday",
+    "attack_type": "DoS slowloris",
+    "rows_incl_attempted": 5732,
+    "rows_attack_only": 4001,
+    "first": "2017-07-05 14:01:00",
+    "last": "2017-07-05 15:10:34",
+    "span_minutes": 69.6,
+    "n_windows": 2,
+    "covered_minutes": 21.8,
+    "largest_window_share": 0.9998,
+    "max_internal_gap_minutes": 47.8,
+    "benign_rows_in_windows": 17430,
+    "benign_rows_in_first_last_span": 47990,
+    "benign_rows_day": 319216,
+    "windows": [
+     {
+      "start": "2017-07-05 14:01:00",
+      "end": "2017-07-05 14:01:00",
+      "rows": 1
+     },
+     {
+      "start": "2017-07-05 14:48:46",
+      "end": "2017-07-05 15:10:34",
+      "rows": 5731
+     }
+    ]
+   },
+   {
+    "day": "Wednesday",
+    "attack_type": "Heartbleed",
+    "rows_incl_attempted": 11,
+    "rows_attack_only": 11,
+    "first": "2017-07-05 20:12:15",
+    "last": "2017-07-05 20:32:18",
+    "span_minutes": 20.1,
+    "n_windows": 1,
+    "covered_minutes": 20.1,
+    "largest_window_share": 1.0,
+    "max_internal_gap_minutes": 2.0,
+    "benign_rows_in_windows": 22469,
+    "benign_rows_in_first_last_span": 22469,
+    "benign_rows_day": 319216,
+    "windows": [
+     {
+      "start": "2017-07-05 20:12:15",
+      "end": "2017-07-05 20:32:18",
+      "rows": 11
+     }
+    ]
+   },
+   {
+    "day": "Thursday",
+    "attack_type": "Infiltration",
+    "rows_incl_attempted": 48,
+    "rows_attack_only": 32,
+    "first": "2017-07-06 19:19:02",
+    "last": "2017-07-06 20:44:24",
+    "span_minutes": 85.4,
+    "n_windows": 3,
+    "covered_minutes": 54.2,
+    "largest_window_share": 0.625,
+    "max_internal_gap_minutes": 21.6,
+    "benign_rows_in_windows": 112660,
+    "benign_rows_in_first_last_span": 135741,
+    "benign_rows_day": 360264,
+    "windows": [
+     {
+      "start": "2017-07-06 19:19:02",
+      "end": "2017-07-06 19:19:02",
+      "rows": 1
+     },
+     {
+      "start": "2017-07-06 19:28:33",
+      "end": "2017-07-06 19:42:49",
+      "rows": 30
+     },
+     {
+      "start": "2017-07-06 20:04:25",
+      "end": "2017-07-06 20:44:24",
+      "rows": 17
+     }
+    ]
+   },
+   {
+    "day": "Thursday",
+    "attack_type": "Web Attack - Brute Force",
+    "rows_incl_attempted": 1365,
+    "rows_attack_only": 151,
+    "first": "2017-07-06 14:15:54",
+    "last": "2017-07-06 15:00:10",
+    "span_minutes": 44.3,
+    "n_windows": 1,
+    "covered_minutes": 44.3,
+    "largest_window_share": 1.0,
+    "max_internal_gap_minutes": 2.4,
+    "benign_rows_in_windows": 35938,
+    "benign_rows_in_first_last_span": 35938,
+    "benign_rows_day": 360264,
+    "windows": [
+     {
+      "start": "2017-07-06 14:15:54",
+      "end": "2017-07-06 15:00:10",
+      "rows": 1365
+     }
+    ]
+   },
+   {
+    "day": "Thursday",
+    "attack_type": "Web Attack - Sql Injection",
+    "rows_incl_attempted": 12,
+    "rows_attack_only": 12,
+    "first": "2017-07-06 15:40:07",
+    "last": "2017-07-06 15:42:50",
+    "span_minutes": 2.7,
+    "n_windows": 1,
+    "covered_minutes": 2.7,
+    "largest_window_share": 1.0,
+    "max_internal_gap_minutes": 0.6,
+    "benign_rows_in_windows": 2272,
+    "benign_rows_in_first_last_span": 2272,
+    "benign_rows_day": 360264,
+    "windows": [
+     {
+      "start": "2017-07-06 15:40:07",
+      "end": "2017-07-06 15:42:50",
+      "rows": 12
+     }
+    ]
+   },
+   {
+    "day": "Thursday",
+    "attack_type": "Web Attack - XSS",
+    "rows_incl_attempted": 679,
+    "rows_attack_only": 27,
+    "first": "2017-07-06 15:15:35",
+    "last": "2017-07-06 15:35:45",
+    "span_minutes": 20.2,
+    "n_windows": 1,
+    "covered_minutes": 20.2,
+    "largest_window_share": 1.0,
+    "max_internal_gap_minutes": 0.3,
+    "benign_rows_in_windows": 9334,
+    "benign_rows_in_first_last_span": 9334,
+    "benign_rows_day": 360264,
+    "windows": [
+     {
+      "start": "2017-07-06 15:15:35",
+      "end": "2017-07-06 15:35:45",
+      "rows": 679
+     }
+    ]
+   },
+   {
+    "day": "Friday",
+    "attack_type": "Bot",
+    "rows_incl_attempted": 2208,
+    "rows_attack_only": 738,
+    "first": "2017-07-07 14:34:13",
+    "last": "2017-07-07 17:59:53",
+    "span_minutes": 205.7,
+    "n_windows": 2,
+    "covered_minutes": 175.7,
+    "largest_window_share": 0.9995,
+    "max_internal_gap_minutes": 30.0,
+    "benign_rows_in_windows": 100792,
+    "benign_rows_in_first_last_span": 124968,
+    "benign_rows_day": 291433,
+    "windows": [
+     {
+      "start": "2017-07-07 14:34:13",
+      "end": "2017-07-07 14:34:13",
+      "rows": 1
+     },
+     {
+      "start": "2017-07-07 15:04:13",
+      "end": "2017-07-07 17:59:53",
+      "rows": 2207
+     }
+    ]
+   },
+   {
+    "day": "Friday",
+    "attack_type": "DDoS",
+    "rows_incl_attempted": 95123,
+    "rows_attack_only": 95123,
+    "first": "2017-07-07 20:56:31",
+    "last": "2017-07-07 21:16:10",
+    "span_minutes": 19.6,
+    "n_windows": 1,
+    "covered_minutes": 19.6,
+    "largest_window_share": 1.0,
+    "max_internal_gap_minutes": 0.0,
+    "benign_rows_in_windows": 16543,
+    "benign_rows_in_first_last_span": 16543,
+    "benign_rows_day": 291433,
+    "windows": [
+     {
+      "start": "2017-07-07 20:56:31",
+      "end": "2017-07-07 21:16:10",
+      "rows": 95123
+     }
+    ]
+   },
+   {
+    "day": "Friday",
+    "attack_type": "PortScan",
+    "rows_incl_attempted": 159151,
+    "rows_attack_only": 159151,
+    "first": "2017-07-07 17:37:57",
+    "last": "2017-07-07 20:23:53",
+    "span_minutes": 165.9,
+    "n_windows": 7,
+    "covered_minutes": 28.4,
+    "largest_window_share": 0.8717,
+    "max_internal_gap_minutes": 46.0,
+    "benign_rows_in_windows": 22024,
+    "benign_rows_in_first_last_span": 92915,
+    "benign_rows_day": 291433,
+    "windows": [
+     {
+      "start": "2017-07-07 17:37:57",
+      "end": "2017-07-07 17:37:57",
+      "rows": 1
+     },
+     {
+      "start": "2017-07-07 18:05:33",
+      "end": "2017-07-07 18:06:00",
+      "rows": 4
+     },
+     {
+      "start": "2017-07-07 18:52:01",
+      "end": "2017-07-07 19:00:36",
+      "rows": 227
+     },
+     {
+      "start": "2017-07-07 19:14:00",
+      "end": "2017-07-07 19:16:00",
+      "rows": 118
+     },
+     {
+      "start": "2017-07-07 19:51:02",
+      "end": "2017-07-07 19:56:00",
+      "rows": 138738
+     },
+     {
+      "start": "2017-07-07 20:03:13",
+      "end": "2017-07-07 20:13:12",
+      "rows": 11039
+     },
+     {
+      "start": "2017-07-07 20:21:25",
+      "end": "2017-07-07 20:23:53",
+      "rows": 9024
+     }
+    ]
+   }
+  ],
+  "day_summary": {
+   "Monday": {
+    "first": "2017-07-03 13:55:58",
+    "last": "2017-07-03 22:01:34",
+    "benign_rows": 371749,
+    "benign_rows_inside_any_attack_window": 0,
+    "benign_rows_outside_all_attack_windows": 371749
+   },
+   "Tuesday": {
+    "first": "2017-07-04 13:53:44",
+    "last": "2017-07-04 22:00:30",
+    "benign_rows": 315031,
+    "benign_rows_inside_any_attack_window": 110537,
+    "benign_rows_outside_all_attack_windows": 204494
+   },
+   "Wednesday": {
+    "first": "2017-07-05 13:42:42",
+    "last": "2017-07-05 22:10:14",
+    "benign_rows": 319216,
+    "benign_rows_inside_any_attack_window": 80200,
+    "benign_rows_outside_all_attack_windows": 239016
+   },
+   "Thursday": {
+    "first": "2017-07-06 13:59:00",
+    "last": "2017-07-06 22:04:36",
+    "benign_rows": 360264,
+    "benign_rows_inside_any_attack_window": 160204,
+    "benign_rows_outside_all_attack_windows": 200060
+   },
+   "Friday": {
+    "first": "2017-07-07 13:59:50",
+    "last": "2017-07-07 22:02:40",
+    "benign_rows": 291433,
+    "benign_rows_inside_any_attack_window": 139358,
+    "benign_rows_outside_all_attack_windows": 152075
+   }
+  },
+  "hourly_counts": {
+   "Monday": {
+    "13": {
+     "BENIGN": 684
+    },
+    "14": {
+     "BENIGN": 57213
+    },
+    "15": {
+     "BENIGN": 58559
+    },
+    "16": {
+     "BENIGN": 56712
+    },
+    "17": {
+     "BENIGN": 33819
+    },
+    "18": {
+     "BENIGN": 42353
+    },
+    "19": {
+     "BENIGN": 37013
+    },
+    "20": {
+     "BENIGN": 36237
+    },
+    "21": {
+     "BENIGN": 47646
+    },
+    "22": {
+     "BENIGN": 1513
+    }
+   },
+   "Tuesday": {
+    "13": {
+     "BENIGN": 1422
+    },
+    "14": {
+     "BENIGN": 63802,
+     "FTP-Patator": 2651
+    },
+    "15": {
+     "BENIGN": 41464,
+     "FTP-Patator": 1333
+    },
+    "16": {
+     "BENIGN": 42063
+    },
+    "17": {
+     "BENIGN": 12191
+    },
+    "18": {
+     "BENIGN": 25408
+    },
+    "19": {
+     "BENIGN": 48377,
+     "SSH-Patator": 2464
+    },
+    "20": {
+     "BENIGN": 34243,
+     "SSH-Patator": 523
+    },
+    "21": {
+     "BENIGN": 45958,
+     "SSH-Patator": 1
+    },
+    "22": {
+     "BENIGN": 103
+    }
+   },
+   "Wednesday": {
+    "13": {
+     "BENIGN": 10487
+    },
+    "14": {
+     "BENIGN": 38826,
+     "DoS slowloris": 3208
+    },
+    "15": {
+     "BENIGN": 49079,
+     "DoS Hulk": 151050,
+     "DoS Slowhttptest": 5111,
+     "DoS slowloris": 2524
+    },
+    "16": {
+     "BENIGN": 37009,
+     "DoS GoldenEye": 7647,
+     "DoS Hulk": 8012
+    },
+    "17": {
+     "BENIGN": 17843
+    },
+    "18": {
+     "BENIGN": 36318
+    },
+    "19": {
+     "BENIGN": 46707
+    },
+    "20": {
+     "BENIGN": 47173,
+     "Heartbleed": 11
+    },
+    "21": {
+     "BENIGN": 33248
+    },
+    "22": {
+     "BENIGN": 2526
+    }
+   },
+   "Thursday": {
+    "13": {
+     "BENIGN": 6
+    },
+    "14": {
+     "BENIGN": 45996,
+     "Web Attack - Brute Force": 1358
+    },
+    "15": {
+     "BENIGN": 33404,
+     "Web Attack - Brute Force": 7,
+     "Web Attack - Sql Injection": 12,
+     "Web Attack - XSS": 679
+    },
+    "16": {
+     "BENIGN": 31652
+    },
+    "17": {
+     "BENIGN": 14014
+    },
+    "18": {
+     "BENIGN": 37486
+    },
+    "19": {
+     "BENIGN": 42268,
+     "Infiltration": 31
+    },
+    "20": {
+     "BENIGN": 118111,
+     "Infiltration": 17
+    },
+    "21": {
+     "BENIGN": 35772
+    },
+    "22": {
+     "BENIGN": 1555
+    }
+   },
+   "Friday": {
+    "13": {
+     "BENIGN": 2
+    },
+    "14": {
+     "BENIGN": 37887,
+     "Bot": 1
+    },
+    "15": {
+     "BENIGN": 54005,
+     "Bot": 724
+    },
+    "16": {
+     "BENIGN": 41346,
+     "Bot": 727
+    },
+    "17": {
+     "BENIGN": 10165,
+     "Bot": 756,
+     "PortScan": 1
+    },
+    "18": {
+     "BENIGN": 32536,
+     "PortScan": 182
+    },
+    "19": {
+     "BENIGN": 40426,
+     "PortScan": 138905
+    },
+    "20": {
+     "BENIGN": 42500,
+     "DDoS": 15841,
+     "PortScan": 20063
+    },
+    "21": {
+     "BENIGN": 31529,
+     "DDoS": 79282
+    },
+    "22": {
+     "BENIGN": 1037
+    }
+   }
+  }
+ },
+ "scan_like_benign_pairs": [
+  {
+   "day": "Thursday",
+   "src_ip": "172.16.0.1",
+   "dst_ip": "192.168.10.51",
+   "rows": 969,
+   "distinct_dst_ports": 956,
+   "first": "2017-07-06T17:29:43",
+   "last": "2017-07-06T21:10:49"
+  },
+  {
+   "day": "Thursday",
+   "src_ip": "192.168.10.8",
+   "dst_ip": "192.168.10.12",
+   "rows": 5019,
+   "distinct_dst_ports": 1010,
+   "first": "2017-07-06T20:08:55",
+   "last": "2017-07-06T20:37:48"
+  },
+  {
+   "day": "Thursday",
+   "src_ip": "192.168.10.8",
+   "dst_ip": "192.168.10.14",
+   "rows": 8106,
+   "distinct_dst_ports": 1018,
+   "first": "2017-07-06T20:09:54",
+   "last": "2017-07-06T20:38:14"
+  },
+  {
+   "day": "Thursday",
+   "src_ip": "192.168.10.8",
+   "dst_ip": "192.168.10.15",
+   "rows": 8105,
+   "distinct_dst_ports": 1018,
+   "first": "2017-07-06T20:10:16",
+   "last": "2017-07-06T20:38:35"
+  },
+  {
+   "day": "Thursday",
+   "src_ip": "192.168.10.8",
+   "dst_ip": "192.168.10.16",
+   "rows": 5047,
+   "distinct_dst_ports": 1010,
+   "first": "2017-07-06T20:10:38",
+   "last": "2017-07-06T20:39:27"
+  },
+  {
+   "day": "Thursday",
+   "src_ip": "192.168.10.8",
+   "dst_ip": "192.168.10.17",
+   "rows": 4872,
+   "distinct_dst_ports": 1010,
+   "first": "2017-07-06T20:11:34",
+   "last": "2017-07-06T20:40:22"
+  },
+  {
+   "day": "Thursday",
+   "src_ip": "192.168.10.8",
+   "dst_ip": "192.168.10.19",
+   "rows": 4864,
+   "distinct_dst_ports": 1010,
+   "first": "2017-07-06T20:12:32",
+   "last": "2017-07-06T20:41:18"
+  },
+  {
+   "day": "Thursday",
+   "src_ip": "192.168.10.8",
+   "dst_ip": "192.168.10.25",
+   "rows": 7060,
+   "distinct_dst_ports": 1005,
+   "first": "2017-07-06T20:13:28",
+   "last": "2017-07-06T20:41:32"
+  },
+  {
+   "day": "Thursday",
+   "src_ip": "192.168.10.8",
+   "dst_ip": "192.168.10.5",
+   "rows": 12136,
+   "distinct_dst_ports": 1014,
+   "first": "2017-07-06T19:33:30",
+   "last": "2017-07-06T20:42:50"
+  },
+  {
+   "day": "Thursday",
+   "src_ip": "192.168.10.8",
+   "dst_ip": "192.168.10.50",
+   "rows": 4885,
+   "distinct_dst_ports": 1054,
+   "first": "2017-07-06T14:05:35",
+   "last": "2017-07-06T21:57:55"
+  },
+  {
+   "day": "Thursday",
+   "src_ip": "192.168.10.8",
+   "dst_ip": "192.168.10.51",
+   "rows": 4739,
+   "distinct_dst_ports": 1004,
+   "first": "2017-07-06T20:14:37",
+   "last": "2017-07-06T20:42:32"
+  },
+  {
+   "day": "Thursday",
+   "src_ip": "192.168.10.8",
+   "dst_ip": "192.168.10.9",
+   "rows": 6321,
+   "distinct_dst_ports": 1011,
+   "first": "2017-07-06T20:07:16",
+   "last": "2017-07-06T20:46:04"
+  },
+  {
+   "day": "Friday",
+   "src_ip": "192.168.10.50",
+   "dst_ip": "172.16.0.1",
+   "rows": 1391,
+   "distinct_dst_ports": 1037,
+   "first": "2017-07-07T19:51:45",
+   "last": "2017-07-07T21:16:10"
+  }
+ ],
+ "identifiers_by_label": [
+  {
+   "day": "Monday",
+   "label": "BENIGN",
+   "rows": 371749,
+   "src_ip": 30,
+   "dst_ip": 9698,
+   "src_port": 52634,
+   "dst_port": 781,
+   "protocols": "0,6,17",
+   "top_dst_ports": [
+    [
+     53,
+     214677,
+     0.5775
+    ],
+    [
+     443,
+     107216,
+     0.2884
+    ],
+    [
+     80,
+     36111,
+     0.0971
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.3",
+    0.4072
+   ],
+   "top_src_ip": [
+    "192.168.10.3",
+    0.1811
+   ]
+  },
+  {
+   "day": "Tuesday",
+   "label": "BENIGN",
+   "rows": 315031,
+   "src_ip": 22,
+   "dst_ip": 8490,
+   "src_port": 52326,
+   "dst_port": 808,
+   "protocols": "0,6,17",
+   "top_dst_ports": [
+    [
+     53,
+     190943,
+     0.6061
+    ],
+    [
+     443,
+     77076,
+     0.2447
+    ],
+    [
+     80,
+     32617,
+     0.1035
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.3",
+    0.4286
+   ],
+   "top_src_ip": [
+    "192.168.10.3",
+    0.1913
+   ]
+  },
+  {
+   "day": "Tuesday",
+   "label": "FTP-Patator",
+   "rows": 3973,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 3973,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     21,
+     3973,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Tuesday",
+   "label": "FTP-Patator - Attempted",
+   "rows": 11,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 11,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     21,
+     11,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Tuesday",
+   "label": "SSH-Patator",
+   "rows": 2980,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 2979,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     22,
+     2980,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Tuesday",
+   "label": "SSH-Patator - Attempted",
+   "rows": 8,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 8,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     22,
+     8,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Wednesday",
+   "label": "BENIGN",
+   "rows": 319216,
+   "src_ip": 24,
+   "dst_ip": 9012,
+   "src_port": 54140,
+   "dst_port": 961,
+   "protocols": "0,6,17",
+   "top_dst_ports": [
+    [
+     53,
+     195536,
+     0.6126
+    ],
+    [
+     443,
+     76699,
+     0.2403
+    ],
+    [
+     80,
+     34382,
+     0.1077
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.3",
+    0.4382
+   ],
+   "top_src_ip": [
+    "192.168.10.3",
+    0.1865
+   ]
+  },
+  {
+   "day": "Wednesday",
+   "label": "DoS GoldenEye",
+   "rows": 7567,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 7494,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     80,
+     7567,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Wednesday",
+   "label": "DoS GoldenEye - Attempted",
+   "rows": 80,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 80,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     80,
+     80,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Wednesday",
+   "label": "DoS Hulk",
+   "rows": 158469,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 14108,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     80,
+     158469,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Wednesday",
+   "label": "DoS Hulk - Attempted",
+   "rows": 593,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 443,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     80,
+     593,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Wednesday",
+   "label": "DoS Slowhttptest",
+   "rows": 1742,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 1408,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     80,
+     1742,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Wednesday",
+   "label": "DoS Slowhttptest - Attempted",
+   "rows": 3369,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 3367,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     80,
+     3369,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Wednesday",
+   "label": "DoS slowloris",
+   "rows": 4001,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 2235,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     80,
+     4001,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Wednesday",
+   "label": "DoS slowloris - Attempted",
+   "rows": 1731,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 1730,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     80,
+     1731,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Wednesday",
+   "label": "Heartbleed",
+   "rows": 11,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 1,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     444,
+     11,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.51",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Thursday",
+   "label": "BENIGN",
+   "rows": 360264,
+   "src_ip": 21,
+   "dst_ip": 8537,
+   "src_port": 51954,
+   "dst_port": 1905,
+   "protocols": "0,6,17",
+   "top_dst_ports": [
+    [
+     53,
+     175870,
+     0.4882
+    ],
+    [
+     443,
+     67281,
+     0.1868
+    ],
+    [
+     80,
+     31232,
+     0.0867
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.3",
+    0.3456
+   ],
+   "top_src_ip": [
+    "192.168.10.8",
+    0.2661
+   ]
+  },
+  {
+   "day": "Thursday",
+   "label": "Infiltration",
+   "rows": 32,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 5,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     444,
+     32,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "205.174.165.73",
+    1.0
+   ],
+   "top_src_ip": [
+    "192.168.10.8",
+    1.0
+   ]
+  },
+  {
+   "day": "Thursday",
+   "label": "Infiltration - Attempted",
+   "rows": 16,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 2,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     444,
+     16,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "205.174.165.73",
+    1.0
+   ],
+   "top_src_ip": [
+    "192.168.10.8",
+    1.0
+   ]
+  },
+  {
+   "day": "Thursday",
+   "label": "Web Attack - Brute Force",
+   "rows": 151,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 151,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     80,
+     151,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Thursday",
+   "label": "Web Attack - Brute Force - Attempted",
+   "rows": 1214,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 1213,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     80,
+     1214,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Thursday",
+   "label": "Web Attack - Sql Injection",
+   "rows": 12,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 12,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     80,
+     12,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Thursday",
+   "label": "Web Attack - XSS",
+   "rows": 27,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 27,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     80,
+     27,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Thursday",
+   "label": "Web Attack - XSS - Attempted",
+   "rows": 652,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 652,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     80,
+     652,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Friday",
+   "label": "BENIGN",
+   "rows": 291433,
+   "src_ip": 23,
+   "dst_ip": 8325,
+   "src_port": 52162,
+   "dst_port": 1759,
+   "protocols": "0,6,17",
+   "top_dst_ports": [
+    [
+     53,
+     180816,
+     0.6204
+    ],
+    [
+     443,
+     61861,
+     0.2123
+    ],
+    [
+     80,
+     31765,
+     0.109
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.3",
+    0.4487
+   ],
+   "top_src_ip": [
+    "192.168.10.3",
+    0.1856
+   ]
+  },
+  {
+   "day": "Friday",
+   "label": "Bot",
+   "rows": 738,
+   "src_ip": 7,
+   "dst_ip": 3,
+   "src_port": 738,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     8080,
+     738,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "205.174.165.73",
+    0.9973
+   ],
+   "top_src_ip": [
+    "192.168.10.15",
+    0.2981
+   ]
+  },
+  {
+   "day": "Friday",
+   "label": "Bot - Attempted",
+   "rows": 1470,
+   "src_ip": 5,
+   "dst_ip": 1,
+   "src_port": 489,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     8080,
+     1470,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "205.174.165.73",
+    1.0
+   ],
+   "top_src_ip": [
+    "192.168.10.15",
+    0.2857
+   ]
+  },
+  {
+   "day": "Friday",
+   "label": "DDoS",
+   "rows": 95123,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 45146,
+   "dst_port": 1,
+   "protocols": "6",
+   "top_dst_ports": [
+    [
+     80,
+     95123,
+     1.0
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  },
+  {
+   "day": "Friday",
+   "label": "PortScan",
+   "rows": 159151,
+   "src_ip": 1,
+   "dst_ip": 1,
+   "src_port": 14142,
+   "dst_port": 1001,
+   "protocols": "0,6,17",
+   "top_dst_ports": [
+    [
+     80,
+     313,
+     0.002
+    ],
+    [
+     21,
+     244,
+     0.0015
+    ],
+    [
+     22,
+     243,
+     0.0015
+    ]
+   ],
+   "top_dst_ip": [
+    "192.168.10.50",
+    1.0
+   ],
+   "top_src_ip": [
+    "172.16.0.1",
+    1.0
+   ]
+  }
+ ]
+}
