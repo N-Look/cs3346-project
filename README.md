@@ -17,24 +17,17 @@ Put the five corrected day CSVs under `data/raw/wtmc2021/`, with the names in
 [the data manifest](data/MANIFEST.md). Run from this directory:
 
 ```bash
-.venv/bin/python -m src.load_data
-.venv/bin/python -m src.preprocess
 .venv/bin/python run_iforest.py
 .venv/bin/python run_random_forest.py
 .venv/bin/python compare_forests.py
 ```
 
-The first command converts the source CSVs into `data/processed/`. The second
-saves one Parquet file per day in `data/cleaned/` with the 73 selected features
-and invalid measurements marked missing. The model runner reads those files
-and regenerates them if they are absent or the converted data changes. It reads
-labels and times separately from the converted files and keeps the original
-row order so the existing split manifests still apply. Missing values are
-filled for each split using medians from its benign training rows.
-
-Each model runs all eligible individual attack types at seeds 42, 43, and 44.
-Isolation Forest saves the shared split manifests. Random Forest checks and
-reuses them. The comparison command checks that feature lists, holdouts,
+Each model reads the original daily CSVs, selects the 73 features, and cleans
+invalid measurements in memory. It preserves source row order and fills
+missing values using medians from each fold's benign training rows.
+Both runners generate their splits from the input and use seeds 42, 43,
+and 44. Random Forest checks the saved split when one is present.
+The comparison command checks that feature lists, holdouts,
 seeds, and test counts match before generating the table and figure.
 
 For a quick comparison, write both pilot runs to separate folders so the full
@@ -57,7 +50,7 @@ run's CSVs stay available:
 - `results/forest_comparison.csv` pairs the metrics, and
   `results/forest_recall.png` plots held-out recall with the range over seeds.
 - `splits/iforest/` contains generated per-type Parquet manifests. Each
-  `row_id` indexes the concatenated processed files from Monday to Friday,
+  `row_id` indexes the concatenated daily records from Monday to Friday,
   preserving each file's row order. See the
   [Isolation Forest methods](reports/iforest_notes.md) and
   [comparison report](reports/forest_comparison.md).
@@ -68,7 +61,7 @@ Commit the two model runners, comparison script, `src/`, `tests/`, `docs/`,
 `reports/`, the final comparison files in `results/`, `requirements.txt`,
 `data/MANIFEST.md`, `AI_USE_LOG.md`, `.gitignore` and this README. Keep
 `.venv/`, downloaded data, converted and cleaned Parquet files, CSV previews,
-and generated split manifests local. The commands above rebuild them.
+and generated split manifests local. Each model computes the features and splits it needs from the source CSVs.
 
 ## Layout
 

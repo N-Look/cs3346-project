@@ -11,7 +11,7 @@ import pandas as pd
 
 from src.evaluate import calibrate_threshold, evaluate_heldout, false_positive_rate, summarize
 from src.iforest import TARGET_FPR, sample_rows, tune_model
-from src.load_data import BENIGN, DAYS, PROCESSED_DIR, REPO_ROOT
+from src.load_data import BENIGN, DAYS, RAW_DIR, REPO_ROOT
 from src.preprocess import fit_imputer, load_experiment_inputs
 from src.random_forest import tune_random_forest
 from src.splits import (
@@ -91,7 +91,7 @@ def main(model_name="IsolationForest"):
     parser.add_argument("--holdout", action="append", help="One label. Repeat to select several.")
     parser.add_argument("--seed", action="append", type=int, help="Defaults to 42, 43, and 44.")
     parser.add_argument("--jobs", type=int, default=4)
-    parser.add_argument("--data-dir", type=Path, default=PROCESSED_DIR)
+    parser.add_argument("--data-dir", type=Path, default=RAW_DIR)
     parser.add_argument("--output-dir", type=Path, default=REPO_ROOT / "results")
     parser.add_argument("--split-dir", type=Path, default=REPO_ROOT / "splits" / "iforest")
     args = parser.parse_args()
@@ -115,7 +115,7 @@ def main(model_name="IsolationForest"):
         partitions = holdout_partitions(metadata, base, fingerprints, attack_type)
         slug = re.sub(r"[^a-z0-9]+", "-", attack_type.lower()).strip("-")
         manifest_path = args.split_dir / f"{slug}.parquet"
-        if model_name == "RandomForest":
+        if model_name == "RandomForest" and manifest_path.exists():
             manifest = pd.read_parquet(manifest_path)
             stored = pd.Categorical(manifest["partition"], categories=PARTITIONS).codes
             if (not np.array_equal(manifest["row_id"], np.arange(len(metadata)))

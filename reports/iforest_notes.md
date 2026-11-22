@@ -6,7 +6,7 @@ The experiment used the corrected CICIDS2017 flow dataset from Engelen, Rimmer a
 
 Each run used 73 numeric flow features. Identifiers, ports, protocol and label metadata were excluded from the model inputs. Three redundant packet-length averages were removed. Infinite values and negative durations, rates and inter-arrival times in the affected fields were treated as missing. The imputer learned each column's median from that fold's eligible benign training rows. The workflow uses float32 model inputs and requires no scaling. [Data audit](data_audit.md) · [Feature list](../results/iforest_features.json)
 
-The five Parquet files in `data/cleaned/` store the 73 features after fixed cleaning, with the original row order preserved. Both the cleaned features and the converted files' split metadata are loaded through `load_experiment_inputs`. Row eligibility and median imputation are applied for each held-out attack type.
+The shared loader cleans the five daily source CSVs in memory on each run. Row eligibility and median imputation are applied for each held-out attack type.
 
 ## Experimental design
 

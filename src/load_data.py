@@ -209,7 +209,7 @@ def load_day(path: str | Path, day: str | None = None) -> pd.DataFrame:
         keep_default_na=False,
         na_values=na_values,
         engine="c",
-        low_memory=False,
+        low_memory=True,  # Parse in blocks with the explicit column types above.
     )
 
     for c in features:

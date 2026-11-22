@@ -1,4 +1,4 @@
-"""Regression checks for saved feature cleaning and source row alignment."""
+"""Regression checks for in-memory feature cleaning and source row alignment."""
 
 import numpy as np
 import pandas as pd
@@ -6,7 +6,7 @@ import pandas as pd
 from src import preprocess
 
 
-def test_saved_features_are_reused_and_rebuilt_with_source_changes(tmp_path, monkeypatch):
+def test_cleaning_reads_current_inputs_in_memory(tmp_path, monkeypatch):
     monkeypatch.setattr(preprocess, "DAYS", ("Monday",))
     source = tmp_path / "Monday.parquet"
     original = pd.DataFrame({
@@ -22,14 +22,9 @@ def test_saved_features_are_reused_and_rebuilt_with_source_changes(tmp_path, mon
     })
     original.to_parquet(source)
 
-    (saved,) = preprocess.prepare_cleaned_files(tmp_path)
-    first_stat = saved.stat()
     metadata, features, columns = preprocess.load_experiment_inputs(tmp_path)
-
-    assert saved.stat().st_ino == first_stat.st_ino
-    assert saved.stat().st_mtime_ns == first_stat.st_mtime_ns
+    assert list(tmp_path.iterdir()) == [source]
     assert columns == ["Packets", *preprocess.NONNEGATIVE_FEATURES]
-    assert list(pd.read_parquet(saved)) == columns
     assert metadata["attack_type"].tolist() == ["BENIGN", "Bot"]
     np.testing.assert_array_equal(features[:, 0], [0.0, 2.0])
     assert not np.signbit(features[0, 0])
